@@ -52,7 +52,7 @@
 
             <div class="row">
                 {% cache 30 object_list %}
-                    {% for item in object_list %}
+                    {% for item in page_obj %}
                         <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <a href="#">
@@ -78,8 +78,8 @@
                 {% endcache %}
 
             </div>
-
-            <nav aria-label="Page navigation example">
+            {% if is_paginated %}
+                <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item {% if not page_obj.has_previous %} disabled {% endif %}">
                         <a class="page-link"
@@ -99,6 +99,7 @@
                     </li>
                 </ul>
             </nav>
+            {% endif %}
 
         </div>
 
